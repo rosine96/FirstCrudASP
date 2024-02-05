@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Watchlist.Models.Films>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Liste des Films</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Ajouter un Film</a>
+</p>
+<table class="table  table-success table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Annee)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Annee)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Modifier</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Supprimer</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
